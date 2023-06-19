@@ -63,7 +63,14 @@
     }
   },
   "files": [
-    "dist",
+    "dist/edge/index.js",
+    "dist/edge/index.d.ts",
+    "dist/server/index.js",
+    "dist/server/index.d.ts",
+    "dist/types/index.js",
+    "dist/types/index.d.ts",
+    "dist/utils/index.js",
+    "dist/utils/index.d.ts",
     "README.md",
     "LICENSE"
   ],
