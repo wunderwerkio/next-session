@@ -14,11 +14,6 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
@@ -26,19 +21,13 @@ jobs:
           version: 8
           run_install: false
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version: 18
+          cache: pnpm
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install dependencies
         run: |
@@ -46,13 +35,21 @@ jobs:
 
       - name: Lint
         run: pnpm exec turbo lint
+        env:
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
       - name: Typecheck
         run: pnpm exec turbo typecheck
+        env:
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
       - name: Build
         run: pnpm exec turbo build
+        env:
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
       - name: Check format
         run: pnpm exec turbo format:check
+        env:
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
