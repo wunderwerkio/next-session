@@ -39,7 +39,10 @@
     "lint": "eslint --ext .ts src",
     "typecheck": "tsc --noEmit",
     "format:check": "prettier --check ./src",
-    "format:write": "prettier --write ./src"
+    "format:write": "prettier --write ./src",
+    "version-package": "pnpm run check-all && changeset version",
+    "publish-package": "pnpm run check-all && changeset publish",
+    "prepare": "husky install"
   },
   "exports": {
     "./edge": {
