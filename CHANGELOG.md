@@ -1,5 +1,11 @@
 # @wunderwerk/next-session
 
+## 1.0.0-alpha.3
+
+### Patch Changes
+
+- [`f32838a`](https://github.com/wunderwerkio/next-session/commit/f32838a124d5e6fbbd768cfcae45be1965dea015) Thanks [@chfoidl](https://github.com/chfoidl)! - Fix npm package included distfiles
+
 ## 1.0.0-alpha.2
 
 ### Patch Changes
