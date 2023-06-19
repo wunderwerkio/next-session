@@ -1,6 +1,6 @@
 {
   "name": "@wunderwerk/next-session",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Encrypted, cookie-based session management for NextJS",
   "keywords": [
     "nextjs",
@@ -14,6 +14,7 @@
     "@changesets/cli": "^2.26.1",
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
+    "@swc/core": "^1.3.65",
     "@types/cookie": "^0.5.1",
     "@wunderwerk/eslint-config": "^1.0.3",
     "eslint": "^8.43.0",
@@ -62,5 +63,8 @@
     "dist",
     "README.md",
     "LICENSE"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://npm.wunderwerk.dev"
+  }
 }
