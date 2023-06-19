@@ -1,0 +1,18 @@
+3,17c3
+< import { IronSession, IronSessionOptions } from 'iron-session';
+< 
+< interface ClientSession {
+<     authenticated: boolean;
+< }
+< interface ReadonlyServerSession extends ClientSession {
+<     tokenResponse?: {
+<         accessToken: string;
+<         refreshToken: string;
+<     };
+< }
+< interface ServerSession extends IronSession, ReadonlyServerSession {
+< }
+< interface SessionOptions extends IronSessionOptions {
+< }
+---
+> import { ServerSession, SessionOptions } from "./index.d.ts";

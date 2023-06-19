@@ -6,8 +6,8 @@ import {
   type NextRequest,
 } from "next/server.js";
 
-import { ServerSession, SessionOptions } from "../types/index.js";
-import { cookieRegex, isTokenExpired } from "../utils/index.js";
+import { ServerSession, SessionOptions } from "../types/index.ts";
+import { cookieRegex, isTokenExpired } from "../utils/index.ts";
 
 type Cookie = {
   name: string;

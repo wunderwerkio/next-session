@@ -1,6 +1,7 @@
 import { defineConfig } from "tsup";
 
 const defaultConfig = {
+  outDir: "dist",
   target: "node18",
   format: "esm",
   dts: true,
@@ -8,23 +9,15 @@ const defaultConfig = {
 
 export default defineConfig([
   {
-    entry: ["src/edge/index.ts"],
-    outDir: "dist/edge",
+    entry: {
+      index: "src/index.ts",
+    },
     ...defaultConfig,
   },
   {
-    entry: ["src/server/index.ts"],
-    outDir: "dist/server",
-    ...defaultConfig,
-  },
-  {
-    entry: ["src/types/index.ts"],
-    outDir: "dist/types",
-    ...defaultConfig,
-  },
-  {
-    entry: ["src/utils/index.ts"],
-    outDir: "dist/utils",
+    entry: {
+      edge: "src/edge/index.ts",
+    },
     ...defaultConfig,
   },
 ]);

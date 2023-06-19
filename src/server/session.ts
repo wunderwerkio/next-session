@@ -2,9 +2,12 @@ import cookie from "cookie";
 import { getIronSession } from "iron-session";
 import type { cookies } from "next/headers.js";
 
-import { ServerSession, SessionOptions } from "../types/index.js";
-import { createReadOnlySession, createServerSession } from "../utils/index.js";
-import { isTokenExpired } from "../utils/index.js";
+import type { ServerSession, SessionOptions } from "../types/index.ts";
+import {
+  createReadOnlySession,
+  createServerSession,
+  isTokenExpired,
+} from "../utils/index.ts";
 
 type NextCookiesFunc = typeof cookies;
 

@@ -1,7 +1,7 @@
 import { getIronSession } from "iron-session/edge";
 
-import { SessionOptions } from "../types/index.js";
-import { createServerSession } from "../utils/index.js";
+import type { SessionOptions } from "../types/index.ts";
+import { createServerSession } from "../utils/index.ts";
 
 /**
  * Get session from request.

@@ -9,6 +9,8 @@
   ],
   "author": "Christian Foidl <christian@wunderwerk.io> (https://wunderwerk.io)",
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.1",
@@ -35,7 +37,7 @@
   },
   "scripts": {
     "check-all": "turbo run build lint typecheck format:check",
-    "build": "tsup",
+    "build": "tsup && patch dist/edge.d.ts patches/fix-edge-types.patch",
     "lint": "eslint --ext .ts src",
     "typecheck": "tsc --noEmit",
     "format:check": "prettier --check ./src",
@@ -45,21 +47,13 @@
     "prepare": "husky install"
   },
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
     "./edge": {
-      "types": "./dist/edge/index.d.ts",
-      "import": "./dist/edge/index.js"
-    },
-    "./server": {
-      "types": "./dist/server/index.d.ts",
-      "import": "./dist/server/index.js"
-    },
-    "./types": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/types/index.js"
-    },
-    "./utils": {
-      "types": "./dist/utils/index.d.ts",
-      "import": "./dist/utils/index.js"
+      "types": "./dist/edge.d.ts",
+      "import": "./dist/edge.js"
     }
   },
   "files": [
