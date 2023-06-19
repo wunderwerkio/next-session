@@ -1,5 +1,11 @@
 # @wunderwerk/next-session
 
+## 1.0.0-alpha.2
+
+### Patch Changes
+
+- [`d759d14`](https://github.com/wunderwerkio/next-session/commit/d759d1498aebe1a3d798da60a05606044fd41cfe) Thanks [@chfoidl](https://github.com/chfoidl)! - Make sure session types are only defined once in distfiles
+
 ## 1.0.0-alpha.1
 
 ### Patch Changes
