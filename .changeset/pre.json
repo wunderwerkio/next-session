@@ -4,5 +4,7 @@
   "initialVersions": {
     "@wunderwerk/next-session": "0.0.0"
   },
-  "changesets": []
+  "changesets": [
+    "mean-crabs-walk"
+  ]
 }
