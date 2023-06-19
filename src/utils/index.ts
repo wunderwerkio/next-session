@@ -13,7 +13,7 @@ export const cookieRegex =
 /**
  * Checks if given JWT is expired.
  *
- * @param token - the JWT to check.
+ * @param token - The JWT to check.
  */
 export const isTokenExpired = (token: string) => {
   const decoded = decodeJwt(token);
@@ -49,10 +49,12 @@ export const createServerSession = (
 export const createReadOnlySession = (
   session: ServerSession
 ): ReadonlyServerSession => {
-  const readonlySession = { ...session } as ReadonlyServerSession;
+  const readonlySession: ReadonlyServerSession = { ...session };
+
   if ("save" in readonlySession) {
     delete readonlySession.save;
   }
+
   if ("destroy" in readonlySession) {
     delete readonlySession.destroy;
   }
@@ -62,9 +64,12 @@ export const createReadOnlySession = (
 
 /**
  * Create a client session from a readonly server session.
+ *
+ * @param session - The server session.
  */
-export const clientSession = (session: ReadonlyServerSession) => {
-  const clientSession = { ...session } as ClientSession;
+export const createClientSession = (session: ReadonlyServerSession) => {
+  const clientSession: ClientSession = { ...session };
+
   if ("tokenResponse" in clientSession) {
     delete clientSession.tokenResponse;
   }

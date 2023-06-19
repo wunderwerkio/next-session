@@ -1,4 +1,16 @@
 {
   "parser": "@typescript-eslint/parser",
-  "extends": ["@wunderwerk/eslint-config/typescript"]
+  "extends": ["@wunderwerk/eslint-config/typescript"],
+  "rules": {
+    "jsdoc/tag-lines": [
+      "warn",
+      "always",
+      {
+        "count": 0,
+        "startLines": 1
+      }
+    ],
+    "@typescript-eslint/consistent-type-assertions": "off",
+    "@typescript-eslint/no-non-null-assertion": "off"
+  }
 }

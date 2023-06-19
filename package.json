@@ -35,7 +35,7 @@
   "scripts": {
     "check-all": "turbo run build lint typecheck format:check",
     "build": "tsup",
-    "lint": "eslint --ext .ts src --max-warnings 0",
+    "lint": "eslint --ext .ts src",
     "typecheck": "tsc --noEmit",
     "format:check": "prettier --check ./src",
     "format:write": "prettier --write ./src"

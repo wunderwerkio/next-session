@@ -10,7 +10,18 @@ type NextCookiesFunc = typeof cookies;
 
 type RefreshTokenCallback = (session: ServerSession) => Promise<void>;
 
+/**
+ * Create the session manager.
+ *
+ * @param refreshToken - Callback function to refresh a new token pair.
+ */
 export const createSessionManager = (refreshToken: RefreshTokenCallback) => {
+  /**
+   * Get the writable server session from request.
+   *
+   * @param cookies - The NextJS cookies() function.
+   * @param sessionOptions - The iron-session options.
+   */
   const getCoreServerSession = async (
     cookies: NextCookiesFunc,
     sessionOptions: SessionOptions
@@ -41,7 +52,6 @@ export const createSessionManager = (refreshToken: RefreshTokenCallback) => {
       session.tokenResponse &&
       isTokenExpired(session.tokenResponse.accessToken)
     ) {
-      console.log("SERVER: Token exp!");
       await refreshToken(session);
     }
 
@@ -103,6 +113,7 @@ const createNextRequest = (cookies: NextCookiesFunc) => {
  * res object.
  *
  * @param cookies - The NextJS cookies() function.
+ * @param readonly - If true, the response will not be able to set cookies.
  */
 const createNextResponse = (cookies: NextCookiesFunc, readonly = false) => {
   return {
@@ -121,9 +132,9 @@ const createNextResponse = (cookies: NextCookiesFunc, readonly = false) => {
             name: "next-session",
             value: data["next-session"],
             httpOnly: true,
-            path: data["Path"],
+            path: data.Path,
             maxAge: parseInt(data["Max-Age"]),
-            sameSite: data["SameSite"] as any,
+            sameSite: data.SameSite as "lax",
           });
         } else {
           cookies().delete(cookieName);

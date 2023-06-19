@@ -29,6 +29,15 @@ type Options = {
   getUserInfo: UserInfoCallback;
 };
 
+/**
+ * Higher order middleware function.
+ *
+ * This middleware checks the current session of the request.
+ * If request has a session it refreshes the included token-pair
+ * if necessary.
+ *
+ * @param options - The middleware options.
+ */
 export const withSession = (options: Options) => (next: NextMiddleware) => {
   return async (req: NextRequest, event: NextFetchEvent) => {
     let sessionCookie: Pick<Cookie, "name" | "value"> | null = null;
@@ -104,6 +113,11 @@ export const withSession = (options: Options) => (next: NextMiddleware) => {
   };
 };
 
+/**
+ * Create common cookie options from session options.
+ *
+ * @param sessionOptions - The session options.
+ */
 const createCookieOptions = (sessionOptions: SessionOptions) => ({
   httpOnly: sessionOptions.cookieOptions?.httpOnly ?? true,
   path: sessionOptions.cookieOptions?.path ?? "/",
@@ -114,6 +128,14 @@ const createCookieOptions = (sessionOptions: SessionOptions) => ({
     process.env.NODE_ENV === "production",
 });
 
+/**
+ * Create a mocked response object that extracts cookies from
+ * the headers append function.
+ *
+ * This is necessary to get the session cookie, set by iron-session.
+ *
+ * @param onCookie - Cookie create callback.
+ */
 const createEdgeResponse = (
   onCookie: (rawValue: string, cookie: Pick<Cookie, "name" | "value">) => void
 ) => {

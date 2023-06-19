@@ -11,6 +11,7 @@ export interface ReadonlyServerSession extends ClientSession {
   };
 }
 
-export interface ServerSession extends IronSession, ReadonlyServerSession {}
+export interface ServerSession extends IronSession, ReadonlyServerSession { }
 
-export interface SessionOptions extends IronSessionOptions {}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface SessionOptions extends IronSessionOptions { }
