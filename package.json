@@ -33,8 +33,9 @@
     "next": "^13.4.6"
   },
   "scripts": {
-    "check-all": "turbo run build typecheck format:check",
+    "check-all": "turbo run build lint typecheck format:check",
     "build": "tsup",
+    "lint": "eslint --ext .ts src --max-warnings 0",
     "typecheck": "tsc --noEmit",
     "format:check": "prettier --check ./src",
     "format:write": "prettier --write ./src"

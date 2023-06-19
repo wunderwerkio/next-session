@@ -7,6 +7,9 @@
     "typecheck": {
       "inputs": ["src/**/*.ts", "tests/**/*.ts"]
     },
+    "lint": {
+      "inputs": ["src/**/*.ts", "tests/**/*.ts"]
+    },
     "format:check": {
       "inputs": ["src/**/*.ts", "tests/**/*.ts"]
     }
