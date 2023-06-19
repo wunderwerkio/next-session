@@ -5,6 +5,7 @@
     "@wunderwerk/next-session": "0.0.0"
   },
   "changesets": [
-    "mean-crabs-walk"
+    "mean-crabs-walk",
+    "pretty-weeks-tease"
   ]
 }
