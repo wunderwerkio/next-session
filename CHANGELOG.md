@@ -1,5 +1,11 @@
 # @wunderwerk/next-session
 
+## 1.0.0-alpha.4
+
+### Minor Changes
+
+- [`e6eb3cd`](https://github.com/wunderwerkio/next-session/commit/e6eb3cd734b12866ef177bef57006f6bb83d5b15) Thanks [@chfoidl](https://github.com/chfoidl)! - Make sure /server code is runnable in edge
+
 ## 1.0.0-alpha.3
 
 ### Patch Changes
