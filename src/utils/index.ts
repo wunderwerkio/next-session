@@ -1,4 +1,4 @@
-import { IronSession } from "iron-session";
+import type { IronSession } from "iron-session";
 import { decodeJwt } from "jose";
 
 import {

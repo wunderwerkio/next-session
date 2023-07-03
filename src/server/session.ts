@@ -1,5 +1,5 @@
 import cookie from "cookie";
-import { getIronSession } from "iron-session";
+import { getIronSession } from "iron-session/edge";
 import type { cookies } from "next/headers.js";
 
 import type { ServerSession, SessionOptions } from "../types/index.ts";
