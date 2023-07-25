@@ -86,7 +86,10 @@ export const withSession = (options: Options) => (next: NextMiddleware) => {
 
     // Redirect to login page if refresh failed.
     if (refreshFailed && req.nextUrl.pathname !== "/auth/login") {
-      return NextResponse.redirect(req.nextUrl.origin + "/auth/login");
+      const res = NextResponse.redirect(req.nextUrl.origin + "/auth/login?reason=refresh-failed");
+      res.cookies.delete(options.sessionOptions.cookieName);
+
+      return res;
     } else if (sessionCookieValue) {
       // Set new session cookie for current request, so that
       // the page gets the updated session.
