@@ -64,7 +64,6 @@
     "README.md",
     "LICENSE"
   ],
-  "packageManager": "pnpm@8.6.5",
   "publishConfig": {
     "registry": "https://npm.wunderwerk.dev"
   }
