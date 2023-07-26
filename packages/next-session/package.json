@@ -1,0 +1,47 @@
+{
+  "name": "@wunderwerk/next-session",
+  "description": "Encrypted, cookie-based session management for NextJS",
+  "keywords": [
+    "nextjs",
+    "session",
+    "auth"
+  ],
+  "author": "Christian Foidl <christian@wunderwerk.io> (https://wunderwerk.io)",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "dist/index.d.ts",
+      "import": "dist/index.ts"
+    }
+  },
+  "ava": {
+    "files": [
+      "tests/**/*.test.ts"
+    ],
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--loader",
+      "ts-node/esm"
+    ]
+  },
+  "scripts": {
+    "test": "NODE_NO_WARNINGS=1 ava",
+    "typecheck": "tsc --project ./tsconfig.json"
+  },
+  "peerDependencies": {
+    "next": "^13.4.12"
+  },
+  "devDependencies": {
+    "ava": "^5.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "jose": "^4.14.4",
+    "session-cookie": "workspace:^"
+  }
+}
