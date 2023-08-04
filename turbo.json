@@ -2,6 +2,8 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
       "inputs": ["src/**/*.ts"]
     },
     "typecheck": {
@@ -10,7 +12,9 @@
     "lint": {
       "inputs": ["src/**/*.ts", "tests/**/*.ts"]
     },
-    "format:check": {
+    "test": {
+      "dependsOn": ["build"],
+      "outputs": [],
       "inputs": ["src/**/*.ts", "tests/**/*.ts"]
     }
   },
