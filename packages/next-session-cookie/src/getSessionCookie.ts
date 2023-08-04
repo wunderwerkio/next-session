@@ -1,10 +1,14 @@
 import { cookies } from "next/headers.js";
+import crypto from "uncrypto";
 import { RequestCookies } from "@edge-runtime/cookies";
-import { unseal, defaults as sealDefaults } from "@hapi/iron";
+import { unseal, defaults as sealDefaults } from "iron-webcrypto";
 import { NextSessionCookie, NextSessionCookieOptions, Req } from "./types.js";
 
 /**
  * Get the unsealed session cookie payload.
+ *
+ * @param options - Cookie options.
+ * @param req - Optional request object.
  */
 export const getSessionCookie = async (
   options: NextSessionCookieOptions,
@@ -18,11 +22,12 @@ export const getSessionCookie = async (
   }
 
   try {
-    const payload = await unseal(
+    const payload = (await unseal(
+      crypto,
       sealedPayload,
       options.password,
       options.sealOptions ?? sealDefaults
-    );
+    )) as NextSessionCookie;
 
     return payload;
   } catch (e) {
@@ -34,6 +39,9 @@ export const getSessionCookie = async (
 
 /**
  * Get session cookie value directly from request.
+ *
+ * @param req - Request object.
+ * @param options - Cookie options.
  */
 const getFromRequest = async (req: Req, options: NextSessionCookieOptions) => {
   const reqCookies = new RequestCookies(req.headers);
@@ -48,6 +56,8 @@ const getFromRequest = async (req: Req, options: NextSessionCookieOptions) => {
 
 /**
  * Get session cookie value via cookies() function.
+ *
+ * @param options - Cookie options.
  */
 const getViaFunction = async (options: NextSessionCookieOptions) => {
   const cookiesFunc = options.nextCookiesFunc ?? cookies;

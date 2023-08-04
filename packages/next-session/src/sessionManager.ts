@@ -1,5 +1,5 @@
 import {
-    NextSessionCookie,
+  NextSessionCookie,
   NextSessionCookieOptions,
   Req,
   Res,
@@ -7,14 +7,22 @@ import {
   deleteSessionCookie,
   getSessionCookie,
   saveSessionCookie,
-} from "session-cookie";
+} from "@wunderwerk/next-session-cookie";
 import {
   AuthenticatedServerSession,
   ClientSession,
   ServerSession,
 } from "./types.js";
 import { NextRequest } from "next/server.js";
+import { extractSubFromToken } from "./utils.js";
 
+/**
+ * Create a new session manager object.
+ *
+ * This session manager contains all necessary methods to work with next sessions.
+ *
+ * @param sessionCookieOptions - Cookie options.
+ */
 export const createSessionManager = (
   sessionCookieOptions: NextSessionCookieOptions
 ) => {
@@ -37,6 +45,7 @@ export const createSessionManager = (
     const serverSession = await getServerSession();
 
     if ("tokenResponse" in serverSession) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       delete serverSession.tokenResponse;
     }
@@ -62,10 +71,13 @@ export const createSessionManager = (
     payload: NextSessionCookie,
     req: NextRequest
   ) => {
-    const cookieValue = await createSessionCookieValue(payload, sessionCookieOptions);
+    const cookieValue = await createSessionCookieValue(
+      payload,
+      sessionCookieOptions
+    );
 
     req.cookies.set(sessionCookieOptions.cookieName, cookieValue);
-  }
+  };
 
   const deleteSession = (res?: Res) => {
     deleteSessionCookie(sessionCookieOptions, res);
@@ -73,7 +85,7 @@ export const createSessionManager = (
 
   const getCookieName = () => {
     return sessionCookieOptions.cookieName;
-  }
+  };
 
   return {
     getServerSession,
@@ -81,7 +93,8 @@ export const createSessionManager = (
     saveSession,
     deleteSession,
     setSessionForNextRequest,
-    getCookieName
+    getCookieName,
+    getSubFromToken: extractSubFromToken,
   };
 };
 

@@ -1,5 +1,5 @@
 import { ResponseCookie } from "@edge-runtime/cookies";
-import { SealOptions } from "@hapi/iron";
+import { SealOptions } from "iron-webcrypto";
 import { cookies } from "next/headers.js";
 import { NextRequest, NextResponse } from "next/server.js";
 

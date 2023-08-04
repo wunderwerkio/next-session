@@ -1,10 +1,15 @@
+import crypto from "uncrypto";
 import { ResponseCookies } from "@edge-runtime/cookies";
-import { seal, defaults as sealDefaults } from "@hapi/iron";
+import { seal, defaults as sealDefaults } from "iron-webcrypto";
 import { NextSessionCookie, NextSessionCookieOptions, Res } from "./types.js";
 import { cookies } from "next/headers.js";
 
 /**
  * Save payload in session cookie.
+ *
+ * @param payload - Session cookie payload.
+ * @param options - Cookie options.
+ * @param res - Optional response object.
  */
 export const saveSessionCookie = async (
   payload: NextSessionCookie,
@@ -22,12 +27,16 @@ export const saveSessionCookie = async (
 
 /**
  * Create the encrypted cookie value.
+ *
+ * @param payload - Session cookie payload.
+ * @param options - Cookie options.
  */
 export const createSessionCookieValue = async (
   payload: NextSessionCookie,
   options: NextSessionCookieOptions
 ) => {
   return await seal(
+    crypto,
     payload,
     options.password,
     options.sealOptions ?? sealDefaults
@@ -36,6 +45,10 @@ export const createSessionCookieValue = async (
 
 /**
  * Set cookie as header on response.
+ *
+ * @param value - Cookie value.
+ * @param res - Response object.
+ * @param options - Cookie options.
  */
 const saveOnResponse = async (
   value: string,
@@ -52,6 +65,8 @@ const saveOnResponse = async (
  * NOTE: This only works in server actions and route handlers!
  *
  * @see https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
+ * @param value - Cookie value.
+ * @param options - Cookie options.
  */
 const saveViaFunction = async (
   value: string,

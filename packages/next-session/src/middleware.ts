@@ -1,38 +1,27 @@
 import {
-  NextResponse,
   type NextFetchEvent,
   type NextMiddleware,
   type NextRequest,
 } from "next/server.js";
-import {
-  AuthenticatedServerSession,
-  ServerSession,
-  TokenResponse,
-} from "./types.js";
-import {
-  NextSessionCookieOptions,
-  createSessionCookieValue,
-} from "session-cookie";
-import { SessionManager, createSessionManager } from "./sessionManager.js";
+import { AuthenticatedServerSession } from "./types.js";
+import { SessionManager } from "./sessionManager.js";
 import { isTokenExpired } from "./utils.js";
-import { NextMiddlewareResult } from "next/dist/server/web/types.js";
-import { ResponseCookies } from "next/dist/compiled/@edge-runtime/cookies";
-
-type RefreshTokenCallback = (
-  refreshToken: string
-) => Promise<TokenResponse | Error>;
-type UserInfoCallback = (session: ServerSession) => Promise<boolean>;
+import { ResponseCookies } from "@edge-runtime/cookies";
 
 type UpdateSessionCallback = (
   session: AuthenticatedServerSession
 ) => Promise<AuthenticatedServerSession | Error>;
 
 type Options = {
-  loginPath: string;
   sessionManager: SessionManager;
   updateSession: UpdateSessionCallback;
 };
 
+/**
+ * NextJS Middleware higher-order function that adds session handling to all routes.
+ *
+ * @param options - Configuration options.
+ */
 export const withSession = (options: Options) => (next: NextMiddleware) => {
   return async (req: NextRequest, event: NextFetchEvent) => {
     // Retrieve session.
@@ -67,7 +56,7 @@ export const withSession = (options: Options) => (next: NextMiddleware) => {
 
     if (updatedSession && !nextRes.headers.has("set-cookie")) {
       console.log("update refreshed session on response");
-      options.sessionManager.saveSession(updatedSession, nextRes);
+      await options.sessionManager.saveSession(updatedSession, nextRes);
     } else if (refreshError) {
       options.sessionManager.deleteSession(nextRes);
 
