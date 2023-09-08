@@ -1,14 +1,10 @@
 {
   "mode": "pre",
-  "tag": "alpha",
+  "tag": "beta",
   "initialVersions": {
-    "@wunderwerk/next-session": "0.0.0"
+    "@local/eslint-config": "0.0.0",
+    "@wunderwerk/next-session": "0.1.0",
+    "@wunderwerk/next-session-cookie": "0.1.0"
   },
-  "changesets": [
-    "mean-crabs-walk",
-    "plenty-shoes-study",
-    "pretty-weeks-tease",
-    "shaggy-bats-tease",
-    "violet-geese-dress"
-  ]
+  "changesets": []
 }
