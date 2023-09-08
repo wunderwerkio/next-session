@@ -51,7 +51,7 @@ jobs:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
       - name: Check format
-        run: pnpm exec turbo format:check
+        run: pnpm format:check
         env:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
