@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@local/eslint-config": "workspace:^",
+    "@local/typescript-config": "workspace:0.0.1-beta.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   },

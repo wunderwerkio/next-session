@@ -60,6 +60,12 @@ importers:
         specifier: 5.0.4
         version: 5.0.4
 
+  packages/config/typescript:
+    devDependencies:
+      typescript:
+        specifier: 5.0.4
+        version: 5.0.4
+
   packages/next-session:
     dependencies:
       '@edge-runtime/cookies':
@@ -78,6 +84,9 @@ importers:
       '@local/eslint-config':
         specifier: workspace:^
         version: link:../config/eslint
+      '@local/typescript-config':
+        specifier: workspace:0.0.1-beta.0
+        version: link:../config/typescript
       tsup:
         specifier: ^7.2.0
         version: 7.2.0(ts-node@10.9.1)(typescript@5.2.2)
@@ -103,6 +112,9 @@ importers:
       '@local/eslint-config':
         specifier: workspace:^
         version: link:../config/eslint
+      '@local/typescript-config':
+        specifier: workspace:0.0.1-beta.0
+        version: link:../config/typescript
       ava:
         specifier: ^5.3.1
         version: 5.3.1

@@ -1,16 +1,3 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "compilerOptions": {
-    "strict": true,
-    "strictNullChecks": true,
-    "skipLibCheck": true,
-    "noEmit": true,
-    "module": "node16",
-    "moduleResolution": "node16",
-    "isolatedModules": true
-  },
-  "exclude": ["node_modules"],
-  "ts-node": {
-    "transpileOnly": true
-  }
+  "extends": "@local/typescript-config/base.json"
 }
