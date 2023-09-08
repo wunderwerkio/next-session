@@ -1,5 +1,5 @@
 /** @type {import("prettier").Config} */
-export default {
+module.exports = {
   arrowParens: "always",
   printWidth: 80,
   singleQuote: false,
@@ -7,8 +7,9 @@ export default {
   semi: true,
   trailingComma: "all",
   tabWidth: 2,
-  plugins: ["@ianvs/prettier-plugin-sort-imports"],
-  pluginSearchDirs: false,
+  plugins: [
+    "@ianvs/prettier-plugin-sort-imports",
+  ],
   importOrder: [
     "^(jest-fetch-mock)$",
     "<THIRD_PARTY_MODULES>",
@@ -21,11 +22,8 @@ export default {
   importOrderSeparation: false,
   importOrderSortSpecifiers: true,
   importOrderBuiltinModulesToTop: true,
-  importOrderParserPlugins: [
-    "decorators-legacy",
-    "importAssertions",
-    "typescript",
-  ],
+  importOrderParserPlugins: ["decorators-legacy", "importAssertions", "typescript"],
   importOrderMergeDuplicateImports: true,
   importOrderCombineTypeAndValueImports: true,
 };
+
