@@ -15,7 +15,7 @@ importers:
         specifier: ^2.26.2
         version: 2.26.2
       '@local/prettier-config':
-        specifier: workspace:0.0.1-beta.0
+        specifier: workspace:*
         version: link:packages/config/prettier
       syncpack:
         specifier: ^11.2.1
@@ -82,10 +82,10 @@ importers:
         version: 13.4.12(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@local/eslint-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../config/eslint
       '@local/typescript-config':
-        specifier: workspace:0.0.1-beta.0
+        specifier: workspace:*
         version: link:../config/typescript
       tsup:
         specifier: ^7.2.0
@@ -110,10 +110,10 @@ importers:
         version: 0.1.3
     devDependencies:
       '@local/eslint-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../config/eslint
       '@local/typescript-config':
-        specifier: workspace:0.0.1-beta.0
+        specifier: workspace:*
         version: link:../config/typescript
       ava:
         specifier: ^5.3.1
