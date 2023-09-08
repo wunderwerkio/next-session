@@ -41,5 +41,11 @@
     "typecheck": "tsc --project ./tsconfig.json"
   },
   "type": "module",
-  "types": "./dist/index.d.ts"
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/index.d.ts",
+    "dist/index.js",
+    "README.md",
+    "CHANGELOG.md"
+  ]
 }
