@@ -4,14 +4,14 @@
   "version": "1.0.0-beta.0",
   "author": "Christian Foidl <christian@wunderwerk.io> (https://wunderwerk.io)",
   "dependencies": {
-    "@edge-runtime/cookies": "^3.2.2",
+    "@edge-runtime/cookies": "^3.4.1",
     "@wunderwerk/next-session-cookie": "workspace:^",
-    "jose": "^4.14.4"
+    "jose": "^4.14.6"
   },
   "devDependencies": {
     "@local/eslint-config": "workspace:^",
-    "tsup": "^7.0.0",
-    "typescript": "^5.1.6"
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
   },
   "exports": {
     ".": {

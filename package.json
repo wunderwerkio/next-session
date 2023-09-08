@@ -3,20 +3,10 @@
   "version": "0.0.0",
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.8",
-    "@changesets/cli": "^2.26.1",
-    "@commitlint/cli": "^17.6.5",
-    "@commitlint/config-conventional": "^17.6.5",
-    "@swc/core": "^1.3.65",
-    "@types/cookie": "^0.5.1",
-    "@wunderwerk/eslint-config": "^1.0.3",
-    "eslint": "^8.43.0",
-    "eslint-plugin-jsdoc": "^46.2.6",
-    "husky": "^8.0.3",
-    "prettier": "^2.8.8",
+    "@changesets/cli": "^2.26.2",
+    "prettier": "^3.0.3",
     "syncpack": "^11.2.1",
-    "tsup": "^7.0.0",
-    "turbo": "^1.10.3",
-    "typescript": "^5.1.3"
+    "turbo": "^1.10.13"
   },
   "private": true,
   "scripts": {
