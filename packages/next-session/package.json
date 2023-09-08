@@ -3,16 +3,32 @@
   "description": "Encrypted, cookie-based session management for NextJS",
   "version": "1.0.0-beta.0",
   "author": "Christian Foidl <christian@wunderwerk.io> (https://wunderwerk.io)",
+  "keywords": [
+    "auth",
+    "nextjs",
+    "session"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "@edge-runtime/cookies": "^3.4.1",
     "@wunderwerk/next-session-cookie": "workspace:^",
     "jose": "^4.14.6"
+  },
+  "peerDependencies": {
+    "next": "^13.4.12"
   },
   "devDependencies": {
     "@local/eslint-config": "workspace:^",
     "@local/typescript-config": "workspace:0.0.1-beta.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "tsup ./src/index.ts --target es2020 --format esm --dts",
+    "lint": "eslint --ext .ts,.tsx src --max-warnings 0",
+    "typecheck": "tsc --project ./tsconfig.json"
   },
   "exports": {
     ".": {
@@ -25,21 +41,5 @@
     "dist/index.d.ts",
     "README.md",
     "LICENSE"
-  ],
-  "keywords": [
-    "auth",
-    "nextjs",
-    "session"
-  ],
-  "main": "./dist/index.js",
-  "peerDependencies": {
-    "next": "^13.4.12"
-  },
-  "scripts": {
-    "build": "tsup ./src/index.ts --target es2020 --format esm --dts",
-    "lint": "eslint --ext .ts,.tsx src --max-warnings 0",
-    "typecheck": "tsc --project ./tsconfig.json"
-  },
-  "type": "module",
-  "types": "./dist/index.d.ts"
+  ]
 }
