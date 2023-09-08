@@ -1,8 +1,9 @@
-import crypto from "uncrypto";
 import { ResponseCookies } from "@edge-runtime/cookies";
 import { seal, defaults as sealDefaults } from "iron-webcrypto";
-import { NextSessionCookie, NextSessionCookieOptions, Res } from "./types.js";
 import { cookies } from "next/headers.js";
+import crypto from "uncrypto";
+
+import { NextSessionCookie, NextSessionCookieOptions, Res } from "./types.js";
 
 /**
  * Save payload in session cookie.
@@ -14,7 +15,7 @@ import { cookies } from "next/headers.js";
 export const saveSessionCookie = async (
   payload: NextSessionCookie,
   options: NextSessionCookieOptions,
-  res?: Res
+  res?: Res,
 ) => {
   const sealedValue = await createSessionCookieValue(payload, options);
 
@@ -33,13 +34,13 @@ export const saveSessionCookie = async (
  */
 export const createSessionCookieValue = async (
   payload: NextSessionCookie,
-  options: NextSessionCookieOptions
+  options: NextSessionCookieOptions,
 ) => {
   return await seal(
     crypto,
     payload,
     options.password,
-    options.sealOptions ?? sealDefaults
+    options.sealOptions ?? sealDefaults,
   );
 };
 
@@ -53,7 +54,7 @@ export const createSessionCookieValue = async (
 const saveOnResponse = async (
   value: string,
   res: Res,
-  options: NextSessionCookieOptions
+  options: NextSessionCookieOptions,
 ) => {
   const resCookies = new ResponseCookies(res.headers);
   resCookies.set(options.cookieName, value, options.cookieOptions);
@@ -70,7 +71,7 @@ const saveOnResponse = async (
  */
 const saveViaFunction = async (
   value: string,
-  options: NextSessionCookieOptions
+  options: NextSessionCookieOptions,
 ) => {
   const cookiesFunc = options.nextCookiesFunc ?? cookies;
 

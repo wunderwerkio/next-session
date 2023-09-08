@@ -1,4 +1,5 @@
 import { RequestCookies } from "@edge-runtime/cookies";
+
 import { NextSessionCookieOptions } from "../src/index.js";
 
 export const testOptions: NextSessionCookieOptions = {

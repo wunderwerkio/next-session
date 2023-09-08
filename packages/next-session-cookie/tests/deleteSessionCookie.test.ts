@@ -1,6 +1,7 @@
 import test from "ava";
-import { testOptions } from "./common.js";
+
 import { deleteSessionCookie } from "../src/deleteSessionCookie.js";
+import { testOptions } from "./common.js";
 
 test("res - delete session cookie", async (t) => {
   const res = new Response();

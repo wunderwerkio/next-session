@@ -31,6 +31,12 @@
       "import": "./dist/index.js"
     }
   },
+  "files": [
+    "dist/index.d.ts",
+    "dist/index.js",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "module": "./dist/index.js",
   "peerDependencies": {
     "next": "^13.4.12"
@@ -42,11 +48,5 @@
     "typecheck": "tsc --project ./tsconfig.json"
   },
   "type": "module",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist/index.d.ts",
-    "dist/index.js",
-    "README.md",
-    "CHANGELOG.md"
-  ]
+  "types": "./dist/index.d.ts"
 }

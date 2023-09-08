@@ -8,12 +8,13 @@ import {
   getSessionCookie,
   saveSessionCookie,
 } from "@wunderwerk/next-session-cookie";
+import { NextRequest } from "next/server.js";
+
 import {
   AuthenticatedServerSession,
   ClientSession,
   ServerSession,
 } from "./types.js";
-import { NextRequest } from "next/server.js";
 import { extractSubFromToken } from "./utils.js";
 
 /**
@@ -24,7 +25,7 @@ import { extractSubFromToken } from "./utils.js";
  * @param sessionCookieOptions - Cookie options.
  */
 export const createSessionManager = (
-  sessionCookieOptions: NextSessionCookieOptions
+  sessionCookieOptions: NextSessionCookieOptions,
 ) => {
   const getServerSession = async (req?: Req): Promise<ServerSession> => {
     const sessionCookie = await getSessionCookie(sessionCookieOptions, req);
@@ -55,7 +56,7 @@ export const createSessionManager = (
 
   const saveSession = async (
     session: AuthenticatedServerSession,
-    res?: Res
+    res?: Res,
   ) => {
     await saveSessionCookie(
       {
@@ -63,17 +64,17 @@ export const createSessionManager = (
         tokenResponse: session.tokenResponse,
       },
       sessionCookieOptions,
-      res
+      res,
     );
   };
 
   const setSessionForNextRequest = async (
     payload: NextSessionCookie,
-    req: NextRequest
+    req: NextRequest,
   ) => {
     const cookieValue = await createSessionCookieValue(
       payload,
-      sessionCookieOptions
+      sessionCookieOptions,
     );
 
     req.cookies.set(sessionCookieOptions.cookieName, cookieValue);

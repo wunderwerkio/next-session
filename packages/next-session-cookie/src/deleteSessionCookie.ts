@@ -1,6 +1,7 @@
 import { ResponseCookies } from "@edge-runtime/cookies";
-import { NextSessionCookieOptions, Res } from "./types.js";
 import { cookies } from "next/headers.js";
+
+import { NextSessionCookieOptions, Res } from "./types.js";
 
 /**
  * Save payload in session cookie.
@@ -10,7 +11,7 @@ import { cookies } from "next/headers.js";
  */
 export const deleteSessionCookie = (
   options: NextSessionCookieOptions,
-  res?: Res
+  res?: Res,
 ) => {
   if (res) {
     return deleteOnResponse(res, options);

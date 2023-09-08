@@ -1,7 +1,8 @@
+import { RequestCookies } from "@edge-runtime/cookies";
+import { defaults as sealDefaults, unseal } from "iron-webcrypto";
 import { cookies } from "next/headers.js";
 import crypto from "uncrypto";
-import { RequestCookies } from "@edge-runtime/cookies";
-import { unseal, defaults as sealDefaults } from "iron-webcrypto";
+
 import { NextSessionCookie, NextSessionCookieOptions, Req } from "./types.js";
 
 /**
@@ -12,7 +13,7 @@ import { NextSessionCookie, NextSessionCookieOptions, Req } from "./types.js";
  */
 export const getSessionCookie = async (
   options: NextSessionCookieOptions,
-  req?: Req
+  req?: Req,
 ): Promise<NextSessionCookie | null> => {
   const sealedPayload = req
     ? await getFromRequest(req, options)
@@ -26,7 +27,7 @@ export const getSessionCookie = async (
       crypto,
       sealedPayload,
       options.password,
-      options.sealOptions ?? sealDefaults
+      options.sealOptions ?? sealDefaults,
     )) as NextSessionCookie;
 
     return payload;
