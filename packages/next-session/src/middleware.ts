@@ -1,15 +1,16 @@
+import { ResponseCookies } from "@edge-runtime/cookies";
 import {
   type NextFetchEvent,
   type NextMiddleware,
   type NextRequest,
 } from "next/server.js";
-import { AuthenticatedServerSession } from "./types.js";
+
 import { SessionManager } from "./sessionManager.js";
+import { AuthenticatedServerSession } from "./types.js";
 import { isTokenExpired } from "./utils.js";
-import { ResponseCookies } from "@edge-runtime/cookies";
 
 type UpdateSessionCallback = (
-  session: AuthenticatedServerSession
+  session: AuthenticatedServerSession,
 ) => Promise<AuthenticatedServerSession | Error>;
 
 type Options = {

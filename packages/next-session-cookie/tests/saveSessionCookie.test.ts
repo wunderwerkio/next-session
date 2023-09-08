@@ -1,4 +1,5 @@
 import test from "ava";
+
 import { saveSessionCookie } from "../src/saveSessionCookie.js";
 import { testOptions } from "./common.js";
 
@@ -44,7 +45,7 @@ test("res - payload with custom cookie options", async (t) => {
         maxAge: 900,
       },
     },
-    res
+    res,
   );
 
   const headerValue = res.headers.get("set-cookie");
