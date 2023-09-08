@@ -6,5 +6,7 @@
     "@wunderwerk/next-session": "0.1.0",
     "@wunderwerk/next-session-cookie": "0.1.0"
   },
-  "changesets": []
+  "changesets": [
+    "sharp-ducks-wave"
+  ]
 }
