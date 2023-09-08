@@ -7,6 +7,7 @@
       "inputs": ["src/**/*.ts"]
     },
     "typecheck": {
+      "dependsOn": ["^build"],
       "inputs": ["src/**/*.ts", "tests/**/*.ts"]
     },
     "lint": {
