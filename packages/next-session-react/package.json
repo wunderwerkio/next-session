@@ -12,7 +12,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "peerDependencies": {
-    "@wunderwerk/next-session": "workspace:1.0.0-beta.2",
+    "@wunderwerk/next-session": "^1.0.0-beta",
     "next": "^13.4.12",
     "react": "^18.2.0"
   },
@@ -41,8 +41,7 @@
     }
   },
   "files": [
-    "dist/index.js",
-    "dist/index.d.ts",
+    "dist/**/*",
     "README.md",
     "LICENSE"
   ],
