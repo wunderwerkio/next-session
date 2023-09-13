@@ -1,7 +1,7 @@
 {
   "name": "@wunderwerk/next-session",
   "description": "Encrypted, cookie-based session management for NextJS",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "author": "Christian Foidl <christian@wunderwerk.io> (https://wunderwerk.io)",
   "keywords": [
     "auth",

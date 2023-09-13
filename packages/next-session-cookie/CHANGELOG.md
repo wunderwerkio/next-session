@@ -1,5 +1,11 @@
 # @wunderwerk/next-session-cookie
 
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- [`88e1f3f`](https://github.com/wunderwerkio/next-session/commit/88e1f3f5d0f046390e179bdaecbbf661983c1822) Thanks [@chfoidl](https://github.com/chfoidl)! - Minor improvements
+
 ## 1.0.0-beta.1
 
 ### Patch Changes
