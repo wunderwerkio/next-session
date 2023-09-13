@@ -5,10 +5,10 @@
     "strict": true,
     "strictNullChecks": true,
     "skipLibCheck": true,
-    "noEmit": true,
     "module": "node16",
     "moduleResolution": "node16",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "noEmit": true
   },
   "exclude": ["node_modules"],
   "ts-node": {

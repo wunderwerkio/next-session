@@ -1,8 +1,10 @@
 module.exports = {
   parser: "@typescript-eslint/parser",
-  extends: ["@wunderwerk/eslint-config/typescript"],
+  extends: [
+    "@wunderwerk/eslint-config/typescript",
+    "@wunderwerk/eslint-config/react",
+  ],
   rules: {
-    "no-console": "off"
-  }
+    "no-console": "off",
+  },
 };
-
