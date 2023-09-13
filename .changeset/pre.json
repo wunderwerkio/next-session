@@ -6,10 +6,12 @@
     "@wunderwerk/next-session": "0.1.0",
     "@wunderwerk/next-session-cookie": "0.1.0",
     "@local/prettier-config": "0.0.1-beta.0",
-    "@local/typescript-config": "0.0.1-beta.0"
+    "@local/typescript-config": "0.0.1-beta.0",
+    "@wunderwerk/next-session-react": "1.0.0"
   },
   "changesets": [
     "dirty-actors-smash",
-    "sharp-ducks-wave"
+    "sharp-ducks-wave",
+    "tidy-hairs-kneel"
   ]
 }
