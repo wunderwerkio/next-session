@@ -1,4 +1,4 @@
-import { SessionManager } from "@wunderwerk/next-session";
+import { SessionManager } from "./sessionManager.js";
 
 /**
  * Creates a NextJS route handler to requests to get the client session.
