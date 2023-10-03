@@ -16,15 +16,15 @@
   },
   "peerDependencies": {
     "@wunderwerk/next-session": "^1.0.0-beta",
-    "next": "^13.4.12",
-    "react": "^18.2.0"
+    "next": "^13.5.4",
+    "react": "^18"
   },
   "devDependencies": {
     "@local/eslint-config": "workspace:*",
     "@local/typescript-config": "workspace:*",
-    "@types/react": "18.2.21",
+    "@types/react": "18.2.24",
     "@wunderwerk/next-session": "workspace:1.0.0-beta.2",
-    "esbuild-react18-useclient": "^1.0.5",
+    "esbuild-react18-useclient": "^1.0.7",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   },
