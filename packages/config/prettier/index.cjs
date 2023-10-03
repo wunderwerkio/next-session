@@ -13,17 +13,12 @@ module.exports = {
   importOrder: [
     "^(jest-fetch-mock)$",
     "<THIRD_PARTY_MODULES>",
-    "^@drupal-kit/(.*)$",
+    "^@wunderwerk/next-session(.*)$",
     "",
     "^~/utils/(.*)$",
     "^~/(.*)$",
     "^[./]",
   ],
-  importOrderSeparation: false,
-  importOrderSortSpecifiers: true,
-  importOrderBuiltinModulesToTop: true,
-  importOrderParserPlugins: ["decorators-legacy", "importAssertions", "typescript"],
-  importOrderMergeDuplicateImports: true,
-  importOrderCombineTypeAndValueImports: true,
+  // importOrderParserPlugins: ["decorators-legacy", "importAssertions", "typescript"],
 };
 

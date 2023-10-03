@@ -1,8 +1,15 @@
 "use client";
 
-import { ClientSession } from "@wunderwerk/next-session";
-import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import invariant from "tiny-invariant";
+import { ClientSession } from "@wunderwerk/next-session";
 
 interface ClientSessionContextValue {
   session?: ClientSession;
@@ -19,7 +26,7 @@ type ClientSessionProviderProps = {
   session?: ClientSession;
   children?: ReactNode;
   clientSessionEndpoint?: string;
-}
+};
 
 /**
  * ClientSessionContext Provider Component.
@@ -32,32 +39,34 @@ type ClientSessionProviderProps = {
 export const ClientSessionProvider = ({
   session: providedSession,
   children,
-  clientSessionEndpoint = '/api/client-session'
+  clientSessionEndpoint = "/api/client-session",
 }: ClientSessionProviderProps) => {
   const [loading, setLoading] = useState(false);
-  const [session, setSession] = useState<ClientSession | undefined>(providedSession);
+  const [session, setSession] = useState<ClientSession | undefined>(
+    providedSession,
+  );
   const [loadRequested, setLoadRequested] = useState(false);
 
   const requestSession = async () => {
     setLoadRequested(true);
-  }
+  };
 
   const fetchSession = useCallback(async () => {
     if (loading) return;
-    setLoading(true)
+    setLoading(true);
 
     try {
       const response = await fetch(clientSessionEndpoint);
-      const data = await response.json() as ClientSession;
+      const data = (await response.json()) as ClientSession;
 
       setSession(data);
     } catch {
       // @todo handle error!
-      console.error('Could not fetch client session!')
+      console.error("Could not fetch client session!");
     }
 
     setLoading(false);
-  }, [clientSessionEndpoint, loading])
+  }, [clientSessionEndpoint, loading]);
 
   useEffect(() => {
     if (loadRequested && !session) {
@@ -73,16 +82,18 @@ export const ClientSessionProvider = ({
   }, [providedSession]);
 
   return (
-    <ClientSessionContext.Provider value={{
-      session,
-      loadingSession: loading,
-      clientSessionEndpoint,
-      requestSession,
-    }}>
+    <ClientSessionContext.Provider
+      value={{
+        session,
+        loadingSession: loading,
+        clientSessionEndpoint,
+        requestSession,
+      }}
+    >
       {children}
     </ClientSessionContext.Provider>
   );
-}
+};
 
 /**
  * React hook to get the client session.
@@ -92,7 +103,10 @@ export const ClientSessionProvider = ({
  */
 export const useClientSession = () => {
   const context = useContext(ClientSessionContext);
-  invariant(context, "useClientSession must be used within ClientSessionProvider!");
+  invariant(
+    context,
+    "useClientSession must be used within ClientSessionProvider!",
+  );
 
   useEffect(() => {
     if (!context.session && !context.loadingSession) {
@@ -111,4 +125,4 @@ export const useClientSession = () => {
     session: undefined,
     loading: true,
   } as const;
-}
+};

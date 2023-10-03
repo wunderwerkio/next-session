@@ -1,21 +1,21 @@
+import { NextRequest } from "next/server.js";
 import {
+  createSessionCookieValue,
+  deleteSessionCookie,
+  getSessionCookie,
   NextSessionCookie,
   NextSessionCookieOptions,
   Req,
   Res,
-  createSessionCookieValue,
-  deleteSessionCookie,
-  getSessionCookie,
   saveSessionCookie,
 } from "@wunderwerk/next-session-cookie";
-import { NextRequest } from "next/server.js";
 
 import {
   AuthenticatedServerSession,
   ClientSession,
   ServerSession,
 } from "./types.js";
-import { extractSubFromToken } from "./utils.js";
+import { extractSubFromToken, toClientSession } from "./utils.js";
 
 /**
  * Create a new session manager object.
@@ -45,13 +45,7 @@ export const createSessionManager = (
   const getClientSession = async (): Promise<ClientSession> => {
     const serverSession = await getServerSession();
 
-    if ("tokenResponse" in serverSession) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      delete serverSession.tokenResponse;
-    }
-
-    return serverSession;
+    return toClientSession(serverSession);
   };
 
   const saveSession = async (

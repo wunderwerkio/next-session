@@ -1,5 +1,7 @@
 import { decodeJwt } from "jose";
 
+import { ClientSession, ServerSession } from "./types.js";
+
 /**
  * Checks if given JWT is expired.
  *
@@ -28,4 +30,23 @@ export const extractSubFromToken = (token: string) => {
   }
 
   return decoded.sub ?? null;
+};
+
+/**
+ * Create a client session from a server session.
+ *
+ * @param serverSession - The server session.
+ */
+export const toClientSession = (
+  serverSession: ServerSession,
+): ClientSession => {
+  const clonedSession = { ...serverSession };
+
+  if ("tokenResponse" in clonedSession) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    delete clonedSession.tokenResponse;
+  }
+
+  return clonedSession;
 };
