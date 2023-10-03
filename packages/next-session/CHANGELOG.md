@@ -1,5 +1,11 @@
 # @wunderwerk/next-session
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- [#14](https://github.com/wunderwerkio/next-session/pull/14) [`a2077c9`](https://github.com/wunderwerkio/next-session/commit/a2077c9f627e0625fa26b3d5e0adf58ab3d2acbe) Thanks [@chfoidl](https://github.com/chfoidl)! - Implement toClientSession utility function
+
 ## 1.0.0-beta.2
 
 ### Patch Changes

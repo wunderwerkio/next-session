@@ -15,7 +15,7 @@
     "tiny-invariant": "^1.3.1"
   },
   "peerDependencies": {
-    "@wunderwerk/next-session": "^1.0.0-beta",
+    "@wunderwerk/next-session": "^1.0.0-beta.3",
     "next": "^13.5.4",
     "react": "^18"
   },
@@ -23,7 +23,7 @@
     "@local/eslint-config": "workspace:*",
     "@local/typescript-config": "workspace:*",
     "@types/react": "18.2.24",
-    "@wunderwerk/next-session": "workspace:1.0.0-beta.2",
+    "@wunderwerk/next-session": "workspace:1.0.0-beta.3",
     "esbuild-react18-useclient": "^1.0.7",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
