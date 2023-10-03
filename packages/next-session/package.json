@@ -12,12 +12,12 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "@edge-runtime/cookies": "^3.4.1",
+    "@edge-runtime/cookies": "^4.0.0",
     "@wunderwerk/next-session-cookie": "workspace:^",
-    "jose": "^4.14.6"
+    "jose": "^4.15.1"
   },
   "peerDependencies": {
-    "next": "^13.4.12"
+    "next": "^13.5.4"
   },
   "devDependencies": {
     "@local/eslint-config": "workspace:*",
