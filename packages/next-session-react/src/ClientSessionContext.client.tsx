@@ -98,10 +98,34 @@ export const ClientSessionProvider = ({
 /**
  * React hook to get the client session.
  *
+ * This requires that the session was passed as prop to
+ * the provider.
+ *
+ * If the session should optionally be fetched, if not passed
+ * as a prop to the provider, use `useClientSessionWithFetch` instead.
+ */
+export const useClientSession = () => {
+  const context = useContext(ClientSessionContext);
+  invariant(
+    context,
+    "useClientSession must be used within ClientSessionProvider!",
+  );
+
+  invariant(
+    context.session,
+    "No session was passed to ClientSessionProvider! If this is expected, use useClientSessionWithFetch instead.",
+  );
+
+  return context.session;
+};
+
+/**
+ * React hook to get the client session.
+ *
  * If the client session is not provided via the ClientSessionContext,
  * the session is fetched from the route handler.
  */
-export const useClientSession = () => {
+export const useClientSessionWithFetch = () => {
   const context = useContext(ClientSessionContext);
   invariant(
     context,
