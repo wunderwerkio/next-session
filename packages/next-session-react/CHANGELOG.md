@@ -1,5 +1,11 @@
 # @wunderwerk/next-session-react
 
+## 1.1.0-beta.2
+
+### Minor Changes
+
+- [#17](https://github.com/wunderwerkio/next-session/pull/17) [`f14f9bc`](https://github.com/wunderwerkio/next-session/commit/f14f9bcd43dffcf2fdc9bc1f6d074dae42b0f768) Thanks [@chfoidl](https://github.com/chfoidl)! - Change useClientSession hook to require a session in context; implement useClientSessionWithFetch hook with previous behavior.
+
 ## 1.0.1-beta.1
 
 ### Patch Changes

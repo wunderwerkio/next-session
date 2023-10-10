@@ -1,7 +1,7 @@
 {
   "name": "@wunderwerk/next-session-react",
   "description": "React components to integrate next-session",
-  "version": "1.0.1-beta.1",
+  "version": "1.1.0-beta.2",
   "author": "Christian Foidl <christian@wunderwerk.io> (https://wunderwerk.io)",
   "keywords": [
     "auth",
