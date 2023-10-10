@@ -14,7 +14,7 @@
   "dependencies": {
     "@edge-runtime/cookies": "^4.0.0",
     "@wunderwerk/next-session-cookie": "workspace:^",
-    "jose": "^4.15.1"
+    "jose": "^4.15.2"
   },
   "peerDependencies": {
     "next": "^13.5.4"

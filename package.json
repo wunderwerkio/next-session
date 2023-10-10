@@ -7,7 +7,7 @@
     "@changesets/cli": "^2.26.2",
     "@local/prettier-config": "workspace:*",
     "syncpack": "^11.2.1",
-    "turbo": "^1.10.14"
+    "turbo": "^1.10.15"
   },
   "scripts": {
     "build": "turbo run build",

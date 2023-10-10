@@ -22,7 +22,7 @@
   "devDependencies": {
     "@local/eslint-config": "workspace:*",
     "@local/typescript-config": "workspace:*",
-    "@types/react": "18.2.24",
+    "@types/react": "18.2.27",
     "@wunderwerk/next-session": "workspace:1.0.0-beta.3",
     "esbuild-react18-useclient": "^1.0.7",
     "tsup": "^7.2.0",
