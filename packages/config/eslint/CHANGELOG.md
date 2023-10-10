@@ -1,5 +1,11 @@
 # @local/eslint-config
 
+## 0.0.1-beta.2
+
+### Patch Changes
+
+- [#19](https://github.com/wunderwerkio/next-session/pull/19) [`8cc547b`](https://github.com/wunderwerkio/next-session/commit/8cc547b78c5c4c10a39588e9067164f07ee2969e) Thanks [@chfoidl](https://github.com/chfoidl)! - Update dependencies
+
 ## 0.0.1-beta.1
 
 ### Patch Changes

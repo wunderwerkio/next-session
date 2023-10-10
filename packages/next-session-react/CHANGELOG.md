@@ -1,5 +1,14 @@
 # @wunderwerk/next-session-react
 
+## 1.1.0-beta.3
+
+### Patch Changes
+
+- [#19](https://github.com/wunderwerkio/next-session/pull/19) [`8cc547b`](https://github.com/wunderwerkio/next-session/commit/8cc547b78c5c4c10a39588e9067164f07ee2969e) Thanks [@chfoidl](https://github.com/chfoidl)! - Update dependencies
+
+- Updated dependencies [[`8cc547b`](https://github.com/wunderwerkio/next-session/commit/8cc547b78c5c4c10a39588e9067164f07ee2969e)]:
+  - @wunderwerk/next-session@1.0.0-beta.4
+
 ## 1.1.0-beta.2
 
 ### Minor Changes
