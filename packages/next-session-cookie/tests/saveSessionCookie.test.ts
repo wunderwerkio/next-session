@@ -70,6 +70,7 @@ test("func - save payload to session cookie of response", async (t) => {
 
   await saveSessionCookie(payload, {
     ...testOptions,
+    // eslint-disable-next-line
     // @ts-ignore
     nextCookiesFunc: () => ({
       set: (name, value) => {
