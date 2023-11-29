@@ -3,7 +3,7 @@ import { SealOptions } from "iron-webcrypto";
 import { cookies } from "next/headers.js";
 import { NextRequest, NextResponse } from "next/server.js";
 
-export type Req = Request | NextRequest;
+export type Req = NextRequest;
 export type Res = Response | NextResponse;
 
 export interface NextSessionCookie {}

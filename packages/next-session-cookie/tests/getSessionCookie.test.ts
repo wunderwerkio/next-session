@@ -1,10 +1,11 @@
 import test from "ava";
+import { NextRequest } from "next/server.js";
 
 import { getSessionCookie } from "../src/getSessionCookie.js";
 import { createRequestWithCookie, testOptions } from "./common.js";
 
 test("req - get empty session cookie", async (t) => {
-  const req = new Request("http://localhost");
+  const req = new Request("http://localhost") as NextRequest;
 
   const value = await getSessionCookie(testOptions, req);
 
@@ -12,19 +13,12 @@ test("req - get empty session cookie", async (t) => {
 });
 
 test("req - handle malformed session cookie", async (t) => {
-  const oldConsole = console.warn;
-  console.warn = () => {};
-
   const req = createRequestWithCookie(
     testOptions.cookieName,
     "malformed-string",
   );
 
-  const value = await getSessionCookie(testOptions, req);
-
-  t.is(value, null);
-
-  console.warn = oldConsole;
+  await t.throwsAsync(getSessionCookie(testOptions, req));
 });
 
 test("req - get value from session cookie", async (t) => {
@@ -53,20 +47,15 @@ test("func - get empty session cookie", async (t) => {
 });
 
 test("func - handle malformed session cookie", async (t) => {
-  const oldConsole = console.warn;
-  console.warn = () => {};
-
-  const value = await getSessionCookie({
-    ...testOptions,
-    // @ts-ignore
-    nextCookiesFunc: () => ({
-      get: (name) => ({ name, value: "malformed-string" }),
+  await t.throwsAsync(
+    getSessionCookie({
+      ...testOptions,
+      // @ts-ignore
+      nextCookiesFunc: () => ({
+        get: (name) => ({ name, value: "malformed-string" }),
+      }),
     }),
-  });
-
-  t.is(value, null);
-
-  console.warn = oldConsole;
+  );
 });
 
 test("func - get value from session cookie", async (t) => {

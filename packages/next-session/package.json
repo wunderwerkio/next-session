@@ -12,18 +12,18 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "@edge-runtime/cookies": "^4.0.0",
+    "@edge-runtime/cookies": "^4.0.2",
     "@wunderwerk/next-session-cookie": "workspace:^",
-    "jose": "^4.15.2"
+    "jose": "^5.1.2"
   },
   "peerDependencies": {
-    "next": "^13.5.4"
+    "next": "^13.5.4 || ^14"
   },
   "devDependencies": {
     "@local/eslint-config": "workspace:*",
     "@local/typescript-config": "workspace:*",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.2"
   },
   "scripts": {
     "build": "tsup ./src/index.ts --target es2020 --format esm --dts",

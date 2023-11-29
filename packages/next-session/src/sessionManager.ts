@@ -28,17 +28,27 @@ export const createSessionManager = (
   sessionCookieOptions: NextSessionCookieOptions,
 ) => {
   const getServerSession = async (req?: Req): Promise<ServerSession> => {
-    const sessionCookie = await getSessionCookie(sessionCookieOptions, req);
-    if (!sessionCookie) {
+    try {
+      const sessionCookie = await getSessionCookie(sessionCookieOptions, req);
+      if (sessionCookie) {
+        return {
+          authenticated: true,
+          userId: sessionCookie.userId,
+          tokenResponse: sessionCookie.tokenResponse,
+        };
+      }
+    } catch (e) {
+      console.warn("Could not unseal next-session cookie:", e);
+
+      // eslint-disable-next-line
       return {
         authenticated: false,
-      };
+        _unsealError: true,
+      } as ServerSession;
     }
 
     return {
-      authenticated: true,
-      userId: sessionCookie.userId,
-      tokenResponse: sessionCookie.tokenResponse,
+      authenticated: false,
     };
   };
 

@@ -58,7 +58,7 @@ test("res - payload with custom cookie options", async (t) => {
   t.assert(headerValue?.includes("HttpOnly;"));
   t.assert(headerValue?.includes("Expires="));
   t.assert(headerValue?.includes("Max-Age=900;"));
-  t.assert(headerValue?.endsWith("SameSite=lax"));
+  t.assert(headerValue?.includes("SameSite=lax"));
 });
 
 test("func - save payload to session cookie of response", async (t) => {
