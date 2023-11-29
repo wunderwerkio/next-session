@@ -1,5 +1,12 @@
 # @wunderwerk/next-session-react
 
+## 2.0.0-beta.4
+
+### Patch Changes
+
+- Updated dependencies [[`f1a53de`](https://github.com/wunderwerkio/next-session/commit/f1a53de3bfc9fc3fdb1e90dbe723fda59adfc928)]:
+  - @wunderwerk/next-session@1.0.0-beta.5
+
 ## 1.1.0-beta.3
 
 ### Patch Changes
