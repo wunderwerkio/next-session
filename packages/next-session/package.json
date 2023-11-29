@@ -17,11 +17,12 @@
     "jose": "^5.1.2"
   },
   "peerDependencies": {
-    "next": "^13.5.4 || ^14"
+    "next": "^13.5 || ^14"
   },
   "devDependencies": {
     "@local/eslint-config": "workspace:*",
     "@local/typescript-config": "workspace:*",
+    "next": "^14.0.3",
     "tsup": "^8.0.1",
     "typescript": "^5.3.2"
   },
