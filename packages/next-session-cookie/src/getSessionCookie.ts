@@ -5,11 +5,15 @@ import crypto from "uncrypto";
 
 import { NextSessionCookie, NextSessionCookieOptions, Req } from "./types.js";
 
+// Hashmap of previously unsealed cookie values.
+const unsealHashMap = new Map<string, NextSessionCookie>();
+
 /**
  * Get the unsealed session cookie payload.
  *
  * @param options - Cookie options.
  * @param req - Optional request object.
+ * @throws Will throw an error if cookie cannot be unsealed.
  */
 export const getSessionCookie = async (
   options: NextSessionCookieOptions,
@@ -22,20 +26,7 @@ export const getSessionCookie = async (
     return null;
   }
 
-  try {
-    const payload = (await unseal(
-      crypto,
-      sealedPayload,
-      options.password,
-      options.sealOptions ?? sealDefaults,
-    )) as NextSessionCookie;
-
-    return payload;
-  } catch (e) {
-    console.warn("Could not unseal session cookie:", (e as Error)?.message);
-
-    return null;
-  }
+  return await unsealCookieValue(sealedPayload, options);
 };
 
 /**
@@ -69,4 +60,37 @@ const getViaFunction = async (options: NextSessionCookieOptions) => {
   }
 
   return cookie.value;
+};
+
+/**
+ * Unseals cookie value into payload.
+ *
+ * Previously unsealed cookie payloads will be cached
+ * to improve performance.
+ *
+ * @param sealedPayload - The sealed cookie value.
+ * @param options - Cookie options.
+ * @throws Will throw an error if cookie cannot be unsealed.
+ */
+const unsealCookieValue = async (
+  sealedPayload: string,
+  options: NextSessionCookieOptions,
+) => {
+  // Check cache.
+  if (unsealHashMap.has(sealedPayload)) {
+    return unsealHashMap.get(sealedPayload) as NextSessionCookie;
+  }
+
+  // Actual unseal.
+  const payload = (await unseal(
+    crypto,
+    sealedPayload,
+    options.password,
+    options.sealOptions ?? sealDefaults,
+  )) as NextSessionCookie;
+
+  // Cache result.
+  unsealHashMap.set(sealedPayload, payload);
+
+  return payload;
 };

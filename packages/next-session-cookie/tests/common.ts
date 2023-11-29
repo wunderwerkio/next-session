@@ -1,4 +1,5 @@
 import { RequestCookies } from "@edge-runtime/cookies";
+import { NextRequest } from "next/server.js";
 
 import { NextSessionCookieOptions } from "../src/index.js";
 
@@ -13,5 +14,5 @@ export const createRequestWithCookie = (name: string, value: string) => {
   const cookies = new RequestCookies(request.headers);
   cookies.set(name, value);
 
-  return request;
+  return request as NextRequest;
 };
