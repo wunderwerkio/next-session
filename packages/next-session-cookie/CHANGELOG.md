@@ -1,5 +1,11 @@
 # @wunderwerk/next-session-cookie
 
+## 1.0.0-beta.4
+
+### Minor Changes
+
+- [#22](https://github.com/wunderwerkio/next-session/pull/22) [`f1a53de`](https://github.com/wunderwerkio/next-session/commit/f1a53de3bfc9fc3fdb1e90dbe723fda59adfc928) Thanks [@chfoidl](https://github.com/chfoidl)! - Improve usability and performance
+
 ## 1.0.0-beta.3
 
 ### Patch Changes
